@@ -9,6 +9,11 @@ RED='\033[0;31m'
 
 if [[ ! -f '/opt/sifter/modules/exmods/cstrike.sh' ]]; then
 	cp ./plug-C.sh /opt/sifter/modules/exmods/cstrike.sh
+	CG=$(pwd)
+	if [[ ${CG} == */"cPlug" ]]; then
+		rm -rf ${CG}
+	fi
+	sifter -e
 fi
 # CobaltStrike Directory Location
 if [[ -f '/opt/sifter/extras/.cstrike' ]]; then
