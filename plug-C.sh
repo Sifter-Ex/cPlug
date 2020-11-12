@@ -6,13 +6,22 @@ LP='\033[1;35m'
 YLW='\033[1;33m'
 LBBLUE='\e[104m'
 RED='\033[0;31m'
-
-if [[ ! -f '/opt/sifter/modules/exmods/cstrike.sh' ]]; then
-	cp ./plug-C.sh /opt/sifter/modules/exmods/cstrike.sh
-	CG=$(pwd)
-	if [[ ${CG} == */"cPlug" ]]; then
-		rm -rf ${CG}
+CG=$(pwd)
+if [[ ${CG} == */"cPlug" ]]; then
+	if [[ ! -f '/opt/sifter/modules/exmods/cstrike.sh' ]]; then
+		cp ./plug-C.sh /opt/sifter/modules/exmods/cstrike.sh
 	fi
+	if [[ -d 'AggressorScripts_CSv3' ]]; then
+		sudo mv AggressorScripts_CSv3/* -t /opt
+		rm -rf AggressorScripts_CSv3
+		sudo chown $USER:$USER -R /opt/Arsenal /opt/cobalt_strike_extention_strike /opt/AggressorScripts
+	fi
+	if [[ -d 'AggressorScripts_CSv4' ]]; then
+		sudo mv AggressorScripts_CSv4/* -t /opt
+		rm -rf AggressorScripts_CSv4
+		sudo chown $USER:$USER -R /opt/cobalt-arsenal
+	fi
+	rm -rf ${CG}
 	sifter -e
 fi
 # CobaltStrike Directory Location
