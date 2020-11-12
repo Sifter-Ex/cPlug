@@ -1,0 +1,19 @@
+beacon_command_register("sharphound", "Uses graph theory to reveal the hidden and often unintended relationships within an Active Directory environment.",
+	"Usage: sharphound [arguments]\n\n" .
+	"Uses execute-assembly to run the assembly and takes given arguments\n");
+alias sharphound{
+	local('$bid $asm $desc @args $argu');
+	$bid = $1;
+	$asm = "/opt/cobalt_strike_extension_kit/exe/SharpHound.exe";
+	$desc = "SharpHound";
+	@args = @_;
+	remove(@args, $bid);
+	$argu = join(' ', @args);
+	if ($argu eq ""){
+		blog2($bid, "" . dstamp(ticks()) . " Executing $desc");
+	}
+	else{
+		blog2($bid, "" . dstamp(ticks()) . " Executing $desc \'$argu\'");
+	}
+	bexecute_assembly!($bid, $asm, $argu);
+}

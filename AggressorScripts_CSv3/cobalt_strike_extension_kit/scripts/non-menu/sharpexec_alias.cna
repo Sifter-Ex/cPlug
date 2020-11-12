@@ -1,0 +1,19 @@
+beacon_command_register("sharpexec", "Offensive security C# tool designed to aid with lateral movement.",
+	"Usage: sharpexec [arguments]\n\n" .
+	"Uses execute-assembly to run the assembly and takes given arguments\n");
+alias sharpexec{
+	local('$bid $asm $desc @args $argu');
+	$bid = $1;
+	$asm = "/opt/cobalt_strike_extension_kit/exe/SharpExec.exe";
+	$desc = "SharpExec";
+	@args = @_;
+	remove(@args, $bid);
+	$argu = join(' ', @args);
+	if ($argu eq ""){
+		blog2($bid, "" . dstamp(ticks()) . " Executing $desc");
+	}
+	else{
+		blog2($bid, "" . dstamp(ticks()) . " Executing $desc \'$argu\'");
+	}
+	bexecute_assembly!($bid, $asm, $argu);
+}

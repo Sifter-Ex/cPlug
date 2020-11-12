@@ -60,6 +60,20 @@ menu within Sifter. <br />
 	Prerequisites:
 	- You will need your own copy of CobaltStrike
 
+	This Repo contains:
+	- plug-C.sh
+		-- Runtime script starting CobaltStrike & the TeamServer from within Sifter
+
+	- AggressorScripts_CSv3
+		- cobalt_strike_extention_kit (https://github.com/josephkingstone/cobalt_strike_extension_kit)
+		- Arsenal (https://github.com/Cliov/Arsenal)
+		- AggressorScripts (https://github.com/bluscreenofjeff/AggressorScripts)
+		-- Aggressor Scripts for CobaltStrike Version 3+
+
+	- AggressorScripts_CSv4
+		- cobalt-arsenal (https://github.com/mgeeky/cobalt-arsenal)
+		-- Aggressor Scripts for CobaltStrike Version 4+
+
 ---------------------------------------------------------------------------------------------------------------------
 
 # Sifter's Tested OS

