@@ -8,7 +8,9 @@
   	<img align="center" src="https://img.shields.io/github/forks/Sifter-Ex/cPlug">
   	<img align="center" src="https://img.shields.io/github/stars/Sifter-Ex/cPlug">		  
 <br>
-	<img align="center" src="https://img.shields.io/badge/@Codename:-c-yellowgreen"><br />
+	<img align="center" src="https://img.shields.io/badge/Sifter Version-Violet-violet">
+<br />
+	<img align="center" src="https://img.shields.io/badge/@Codename:-c-yellowgreen">
 	<img align="center" src="https://img.shields.io/badge/Version-Alpha-green">
 </p>
 
@@ -28,9 +30,9 @@
 	@Codename: c
 
 <br>
-<em>[<strong>Sifter | Gemin1's</strong>] latest release's zip package can be downloaded from <a href="https://github.com/s1l3nt78/sifter/archive/master.zip"><strong>here</strong></a></em>
+<em>[<strong>Sifter | Violet's</strong>] latest release's zip package can be downloaded from <a href="https://github.com/s1l3nt78/sifter/archive/master.zip"><strong>here</strong></a></em>
 <br />
-<em>[<strong>Sifter | Gemin1's</strong>] latest .deb package is also available for download from <a href="https://github.com/s1l3nt78/sifter/releases/download/v11/sifter_11.deb"><strong>here</strong></a></em>
+<em>[<strong>Sifter | Violets's</strong>] latest .deb package is also available for download from <a href="https://github.com/s1l3nt78/sifter/releases/download/v11/sifter_11.deb"><strong>here</strong></a></em>
 <br />
 <em>Older Releases can be found <a href="https://github.com/s1l3nt78/sifter/archive/"><strong>here</strong></a></em>
 <br>
@@ -65,14 +67,14 @@ menu within Sifter. <br />
 		-- Runtime script starting CobaltStrike & the TeamServer from within Sifter
 
 	- AggressorScripts_CSv3
-		- cobalt_strike_extention_kit (https://github.com/josephkingstone/cobalt_strike_extension_kit)
-		- Arsenal (https://github.com/Cliov/Arsenal)
-		- AggressorScripts (https://github.com/bluscreenofjeff/AggressorScripts)
-		-- Aggressor Scripts for CobaltStrike Version 3+
+		= Aggressor Scripts for CobaltStrike Version 3+
+		-- cobalt_strike_extention_kit (https://github.com/josephkingstone/cobalt_strike_extension_kit)
+		-- Arsenal (https://github.com/Cliov/Arsenal)
+		-- AggressorScripts (https://github.com/bluscreenofjeff/AggressorScripts)
 
 	- AggressorScripts_CSv4
-		- cobalt-arsenal (https://github.com/mgeeky/cobalt-arsenal)
-		-- Aggressor Scripts for CobaltStrike Version 4+
+		= Aggressor Scripts for CobaltStrike Version 4+
+		-- cobalt-arsenal (https://github.com/mgeeky/cobalt-arsenal)
 
 ---------------------------------------------------------------------------------------------------------------------
 
