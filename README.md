@@ -75,6 +75,7 @@ menu within Sifter. <br />
 	- AggressorScripts_CSv4
 		= Aggressor Scripts for CobaltStrike Version 4+
 		-- cobalt-arsenal (https://github.com/mgeeky/cobalt-arsenal)
+		-- aggressor-scripts     https://github.com/threatexpress/aggressor-scripts
 
 ---------------------------------------------------------------------------------------------------------------------
 
