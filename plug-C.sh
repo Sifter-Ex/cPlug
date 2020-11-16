@@ -31,7 +31,7 @@ if [[ ${CG} == */"cPlug" ]]; then
 fi
 if [[ ! -f '/opt/sifter/modules/exmods/CS/miko.py' ]] || [[ ! -f '/opt/sifter/modules/exmods/CS/cmiko.py' ]]; then
 	cd ${CS}
-	wget 
+	wget https://raw.githubusercontent.com/Sifter-Ex/cPlug/master/ext/miko.py
 fi
 # CobaltStrike Directory Location
 if [[ -f '/opt/sifter/extras/.cstrike' ]]; then
