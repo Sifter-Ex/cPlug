@@ -13,7 +13,7 @@
 	<img align="center" src="https://img.shields.io/badge/@Codename:-c-yellowgreen">
 </p>
 
-# *G.Ex*
+# *C.Ex*
 <strong><em>s1l3nt78</em></strong>
 <br>
 <strong><em>~The Dead Bunny Collective~</em></strong>
