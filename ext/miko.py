@@ -22,7 +22,7 @@ stdin, stdout, stderr = p.exec_command(apname)
 opt = stdout.readlines()
 opt = "".join(opt)
 print(opt)
-# print('opt' + line.strip('\n'))
+print('opt' + line.strip('\n'))
 
 p.close()
 

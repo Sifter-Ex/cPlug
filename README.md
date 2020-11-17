@@ -11,7 +11,6 @@
 	<img align="center" src="https://img.shields.io/badge/Sifter Version-Violet-violet">
 <br />
 	<img align="center" src="https://img.shields.io/badge/@Codename:-c-yellowgreen">
-	<img align="center" src="https://img.shields.io/badge/Version-Alpha-green">
 </p>
 
 # *G.Ex*
@@ -28,11 +27,13 @@
 # Release
 
 	@Codename: c
+	@Version: .2
+	- Added functionality to start a teamserver hosted on a remote server
 
 <br>
-<em>[<strong>Sifter | Violet's</strong>] latest release's zip package can be downloaded from <a href="https://github.com/s1l3nt78/sifter/archive/master.zip"><strong>here</strong></a></em>
+<em>[<strong>Sifter's</strong>] latest release's zip package can be downloaded from <a href="https://github.com/s1l3nt78/sifter/archive/master.zip"><strong>here</strong></a></em>
 <br />
-<em>[<strong>Sifter | Violets's</strong>] latest .deb package is also available for download from <a href="https://github.com/s1l3nt78/sifter/releases/download/v11/sifter_11.deb"><strong>here</strong></a></em>
+<em>[<strong>Sifter's</strong>] latest .deb package is also available for download from <a href="https://github.com/s1l3nt78/sifter/releases/download/v11/sifter_11.deb"><strong>here</strong></a></em>
 <br />
 <em>Older Releases can be found <a href="https://github.com/s1l3nt78/sifter/archive/"><strong>here</strong></a></em>
 <br>
