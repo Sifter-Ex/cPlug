@@ -19,7 +19,7 @@ if [[ ${CG} == */"cPlug" ]]; then
 	if [[ -d 'AggressorScripts_CSv3' ]]; then
 		sudo mv AggressorScripts_CSv3/* -t /opt
 		rm -rf AggressorScripts_CSv3
-		sudo chown $USER:$USER -R /opt/Arsenal /opt/cobalt_strike_extention_strike /opt/AggressorScripts
+		sudo chown $USER:$USER -R /opt/Arsenal /opt/cobalt_strike_extention_strike /opt/AggressorScripts /opt/agcollection /opt/BypassAV /opt/cactustorch /opt/kits
 	fi
 	if [[ -d 'AggressorScripts_CSv4' ]]; then
 		sudo mv AggressorScripts_CSv4/* -t /opt
