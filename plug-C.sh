@@ -12,22 +12,13 @@ if [[ ! -d ${CS} ]]; then
 	mkdir ${CS}
 fi
 if [[ ${CG} == */"cPlug" ]]; then
-	cp ext/miko.py -t ${CS}
+	mv ext/miko.py -t ${CS}
+	rm -rf ext
 	if [[ ! -f '/opt/sifter/modules/exmods/CS/cstrike.sh' ]]; then
-		cp ./plug-C.sh /opt/sifter/modules/exmods/CS/cstrike.sh
+		mv ./plug-C.sh /opt/sifter/modules/exmods/CS/cstrike.sh
 	fi
-	if [[ -d 'AggressorScripts_CSv3' ]]; then
-		sudo mv AggressorScripts_CSv3/* -t /opt
-		rm -rf AggressorScripts_CSv3
-		sudo chown $USER:$USER -R /opt/Arsenal /opt/cobalt_strike_extention_strike /opt/AggressorScripts /opt/agcollection /opt/BypassAV /opt/cactustorch /opt/kits
-	fi
-	if [[ -d 'AggressorScripts_CSv4' ]]; then
-		sudo mv AggressorScripts_CSv4/* -t /opt
-		rm -rf AggressorScripts_CSv4
-		sudo chown $USER:$USER -R /opt/cobalt-arsenal /opt/aggressor-scripts
-	fi
-	rm -rf ${CG}
-	sifter -e
+	sudo mv ${CG} /opt/CSAgScripts
+	sudo chown $USER:$USER -R /opt/CSAgScripts
 fi
 if [[ ! -f '/opt/sifter/modules/exmods/CS/miko.py' ]] || [[ ! -f '/opt/sifter/modules/exmods/CS/cmiko.py' ]]; then
 	cd ${CS}
