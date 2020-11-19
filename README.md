@@ -66,22 +66,23 @@ menu within Sifter. <br />
 
 	This Repo contains:
 	- plug-C.sh
-		-- Runtime script starting CobaltStrike & the TeamServer from within Sifter
+		└── Runtime script starting CobaltStrike & the TeamServer from within Sifter
 
 	- AggressorScripts_CSv3
-		= Aggressor Scripts for CobaltStrike Version 3+
-		-- cobalt_strike_extention_kit  https://github.com/josephkingstone/cobalt_strike_extension_kit
-		-- Arsenal 			https://github.com/Cliov/Arsenal
-		-- AggressorScripts 		https://github.com/bluscreenofjeff/AggressorScripts
-		-- Cactustorch			https://github.com/mdsecactivebreach/CACTUSTORCH
-		-- agcollection			https://github.com/michalkoczwara/aggressor_scripts_collection
-		-- kits				https://github.com/bytecod3r/Cobaltstrike-Aggressor-Scripts-Collection
-		-- BypassAV			https://github.com/hack2fun/BypassAV
+		├ Aggressor Scripts for CobaltStrike Version 3+
+		├── cobalt_strike_extention_kit https://github.com/josephkingstone/cobalt_strike_extension_kit
+		├── Arsenal 			https://github.com/Cliov/Arsenal
+		├── AggressorScripts 		https://github.com/bluscreenofjeff/AggressorScripts
+		├── Cactustorch			https://github.com/mdsecactivebreach/CACTUSTORCH
+		├── agcollection		https://github.com/michalkoczwara/aggressor_scripts_collection
+		├── kits			https://github.com/bytecod3r/Cobaltstrike-Aggressor-Scripts-Collection
+		├── BypassAV			https://github.com/hack2fun/BypassAV
+		└── Landon			https://github.com/k8gege/Aggressor
 		
 	- AggressorScripts_CSv4
-		= Aggressor Scripts for CobaltStrike Version 4+
-		-- cobalt-arsenal 		https://github.com/mgeeky/cobalt-arsenal
-		-- aggressor-scripts     	https://github.com/threatexpress/aggressor-scripts
+		├ Aggressor Scripts for CobaltStrike Version 4+
+		├── cobalt-arsenal 		https://github.com/mgeeky/cobalt-arsenal
+		└── aggressor-scripts     	https://github.com/threatexpress/aggressor-scripts
 
 ---------------------------------------------------------------------------------------------------------------------
 
