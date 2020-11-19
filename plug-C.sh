@@ -19,11 +19,9 @@ if [[ ${CG} == */"cPlug" ]]; then
 	fi
 	sudo mv ${CG} /opt/CSAgScripts
 	sudo chown $USER:$USER -R /opt/CSAgScripts
+	exit 1
 fi
-if [[ ! -f '/opt/sifter/modules/exmods/CS/miko.py' ]] || [[ ! -f '/opt/sifter/modules/exmods/CS/cmiko.py' ]]; then
-	cd ${CS}
-	wget https://raw.githubusercontent.com/Sifter-Ex/cPlug/master/ext/miko.py
-fi
+
 # CobaltStrike Directory Location
 if [[ -f '/opt/sifter/extras/.cstrike' ]]; then
 	CDIR=$(cat /opt/sifter/extras/.cstrike)
