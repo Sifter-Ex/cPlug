@@ -5,9 +5,9 @@ import os
 
 host = "RSI"
 port = 22
-username = "root"                      # CHANGE THIS
-password = "RSP"                      # CHANGE THIS
-apname = "cd TSDIR; ./teamserver RSI TSP"       # Change this for a different command to be run
+username = "root"                      
+password = "RSP"                     
+apname = "cd TSDIR; ./teamserver RSI TSP"      
 
 p = paramiko.SSHClient()
 p.set_missing_host_key_policy(paramiko.AutoAddPolicy())
