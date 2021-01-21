@@ -7,3 +7,4 @@ Aggressor Scripts for CobaltStrike Version 3+
 - agcollection			https://github.com/michalkoczwara/aggressor_scripts_collection
 - kits				https://github.com/bytecod3r/Cobaltstrike-Aggressor-Scripts-Collection
 - BypassAV			https://github.com/hack2fun/BypassAV
+- C2Concealer			https://github.com/FortyNorthSecurity/C2concealer

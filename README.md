@@ -77,6 +77,7 @@ menu within Sifter. <br />
 		├── agcollection		https://github.com/michalkoczwara/aggressor_scripts_collection
 		├── kits			https://github.com/bytecod3r/Cobaltstrike-Aggressor-Scripts-Collection
 		├── BypassAV			https://github.com/hack2fun/BypassAV
+		├── C2concelear			https://github.com/FortyNorthSecurity/C2concealer
 		└── Landon			https://github.com/k8gege/Aggressor
 		
 	- AggressorScripts_CSv4
